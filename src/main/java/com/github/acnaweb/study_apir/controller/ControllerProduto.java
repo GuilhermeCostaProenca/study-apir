@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("produtos")
 public class ControllerProduto {
 
+    @AutuWired
+    private ProductService ProductService;
+
+
     @PostMapping
     public ResponseEntity<String> create() {
         return ResponseEntity.status(201).body("Produto cadastrado");
@@ -19,17 +23,20 @@ public class ControllerProduto {
 
     @DeleteMapping
     public ResponseEntity<Void> delete() {
+        ProductService.deleteProduct(id:null);
         return ResponseEntity.status(204).build();
 
     }
 
     @PutMapping
     public ResponseEntity<String> update() {
+        ProductService.updateProduct(id:null, product:null);
         return ResponseEntity.status(200).body("Produto atualizado");        
     }
 
     @GetMapping
     public ResponseEntity<String> find() {
+        ProductService.deleteProduct(id:null)
         return ResponseEntity.status(200).body("Maça");        
 
     }
